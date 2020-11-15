@@ -67,10 +67,24 @@ console.log("empWage for UC2 : "+employeeWage);
     {
         let empCheck= Math.floor((Math.random()*10)%3);
         empHrs=getWorkingHrs(empCheck); 
-        totalWorkinghrs+=empHrs
-        console.log(totalWorkinghrs);      
+        totalWorkinghrs+=empHrs   
     }
     employeeWage= totalWorkinghrs*WAGE_PER_HOUR;
     console.log("EmployeeWage for month UC4 : "+ employeeWage);
+
+    //UC5-Total Working Hours Less Than 100 or Total working days less than 20
+    console.log("UC5-Total Working Hours Less Than 100 or Total working days less than 20");
+    const MAX_WORKING_HOURS=160;
+    let daysWorked=0;
+    let workingHrs=0;
+    while(totalWorkinghrs<MAX_WORKING_HOURS && daysWorked<NUM_OF_WORKING_DAYS)
+    {
+        daysWorked++;
+        empCheck= Math.floor((Math.random()*10)%3);
+        empHrs=getWorkingHrs(empCheck); 
+        workingHrs+=empHrs;
+    }
+    employeeWage= workingHrs*WAGE_PER_HOUR;
+    console.log("total working days for UC5 : "+daysWorked +" EmployeeWage for month UC5 : "+ employeeWage);
 }
 
