@@ -34,8 +34,8 @@ switch(empCheck)
 }
 let employeeWage= WAGE_PER_HOUR*emp_hours;
 console.log("empWage for UC2 : "+employeeWage);
+//UC3-Refractor UC2 to Write Functions
 {
-    //UC3-Refractor UC2 to Write Functions
     console.log("UC3-Refractor UC2 to Write Functions");  
     const IS_Full_TIME=2;
     const IS_PART_TIME=1;
