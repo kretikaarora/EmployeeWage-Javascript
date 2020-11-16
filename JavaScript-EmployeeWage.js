@@ -91,6 +91,7 @@ console.log("empWage for UC2 : "+employeeWage);
     daysWorked=0;
     totalWorkinghrs=0;
     let empDailyWageArray= new Array();
+    let empDailyWageMap = new Map();
     function CalEmpWage(empHrs)
     {
         return empHrs*WAGE_PER_HOUR;
@@ -102,6 +103,7 @@ console.log("empWage for UC2 : "+employeeWage);
         let empHrs=getWorkingHrs(empCheck); 
         totalWorkinghrs+=empHrs;
         empDailyWageArray.push(CalEmpWage(empHrs));
+        empDailyWageMap.set(daysWorked,CalEmpWage(empHrs));
     }
     let totalWage=CalEmpWage(totalWorkinghrs);
     console.log("UC6 daily wage array ");
@@ -167,6 +169,16 @@ console.log("empWage for UC2 : "+employeeWage);
     }
     //using reduce function and give noofdays as 0 for begining 
     console.log("UC 7g no of days employee worked actually : "+empDailyWageArray.reduce(totalDaysWorked,0));
+    //UC8 Using map DataStructure
+    let totalWageMap=0;
+    for(let wage of empDailyWageMap.values())
+    {
+        totalWageMap+=wage;
+    }
+    console.log("total wage from map :"+totalWageMap)
+    console.log(empDailyWageMap);
+    
+
 }
 
     
