@@ -177,8 +177,6 @@ console.log("empWage for UC2 : "+employeeWage);
     }
     console.log("total wage from map :"+totalWageMap)
     console.log(empDailyWageMap);
-    
-
 }
 
     
