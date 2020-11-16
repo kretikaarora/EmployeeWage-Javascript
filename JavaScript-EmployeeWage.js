@@ -86,5 +86,29 @@ console.log("empWage for UC2 : "+employeeWage);
     }
     employeeWage= workingHrs*WAGE_PER_HOUR;
     console.log("total working days for UC5 : "+daysWorked +" EmployeeWage for month UC5 : "+ employeeWage);
+
+//UC6-Storing total wage and daily wage in an array by creating a function
+    daysWorked=0;
+    totalWorkinghrs=0;
+    let empDailyWageArray= new Array();
+    function CalEmpWage(empHrs)
+    {
+        return empHrs*WAGE_PER_HOUR;
+    }
+    while(totalWorkinghrs<MAX_WORKING_HOURS && daysWorked<NUM_OF_WORKING_DAYS)
+    {
+        daysWorked++;
+        let empCheck= Math.floor((Math.random()*10)%3);
+        let empHrs=getWorkingHrs(empCheck); 
+        totalWorkinghrs+=empHrs;
+        empDailyWageArray.push(CalEmpWage(empHrs));
+    }
+    let totalWage=CalEmpWage(totalWorkinghrs);
+    console.log("daily wage");
+    console.log(empDailyWageArray);
+    console.log("total working days for UC6 : "+daysWorked +" EmployeeWage for month UC6: "+ totalWage);
 }
+    
+    
+
 
