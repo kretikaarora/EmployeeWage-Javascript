@@ -87,7 +87,7 @@ console.log("empWage for UC2 : "+employeeWage);
     employeeWage= workingHrs*WAGE_PER_HOUR;
     console.log("total working days for UC5 : "+daysWorked +" EmployeeWage for month UC5 : "+ employeeWage);
 
-//UC6-Storing total wage and daily wage in an array by creating a function
+    //UC6-Storing total wage and daily wage in an array by creating a function
     daysWorked=0;
     totalWorkinghrs=0;
     let empDailyWageArray= new Array();
@@ -104,10 +104,71 @@ console.log("empWage for UC2 : "+employeeWage);
         empDailyWageArray.push(CalEmpWage(empHrs));
     }
     let totalWage=CalEmpWage(totalWorkinghrs);
-    console.log("daily wage");
+    console.log("UC6 daily wage array ");
     console.log(empDailyWageArray);
     console.log("total working days for UC6 : "+daysWorked +" EmployeeWage for month UC6: "+ totalWage);
+    //UC7A-Calculating TotalWage using foreach
+    let totalEmployeeWage=0;
+    function sum(dailyWage)
+    {
+        totalEmployeeWage+= dailyWage;
+    }
+    //will perform the function sum foreach element in the array
+    empDailyWageArray.forEach(sum);
+    console.log("UC 7a Emp wage with foreach: "+totalEmployeeWage);
+    function totalWages(totalWage,dailyWage)
+    {
+        return totalWage+dailyWage;
+    }
+    //this will also perform a similar func like foreach
+    //the first parameter for reduce is the function name with atleast max 4 parameters
+    //the second parameter for reduce is the initial value of totalwage so that it can start
+    //daily wages are extracted from the array
+    console.log("UC 7a Emp wage with reduce: "+empDailyWageArray.reduce(totalWages,0));
+    // UC 7b- daily wage counter using array map
+    //UC 7B- show the day along with daily wage using array map helper functions.
+    let dayCount= 0;
+    function mapDayWithWage(dailyWage)
+    { 
+       dayCount+=1;
+       return dayCount + " = "+ dailyWage; 
+    }
+    let mapDaywithWageArray= empDailyWageArray.map(mapDayWithWage);
+    //console.log(empDailyWageArray);
+    console.log(mapDaywithWageArray);
+    //console.log(dayCount);
+
+    //UC 7c - displaying days when daily wage is 160
+    function FullTimeWage(dailyWage)
+    {
+        return dailyWage.includes("160");
+    }
+    let fullDayWageArr= mapDaywithWageArray.filter(FullTimeWage);
+    console.log("UC 7c: "+fullDayWageArr); 
+    //UC 7d- finding first day occurence when employee was present for full day 160 wage
+    console.log("UC 7d first time employee was present for full day: "+ mapDaywithWageArray.find(FullTimeWage))
+    //UC 7e- checking if every element of fullday wage array contains 160 
+    console.log("UC 7e: checking if all elements of full time employee has wage of 160 : "+fullDayWageArr.every(FullTimeWage));
+    //UC 7f- Checking if there is any part time wage i.e. 80
+    function PartTimeWage(dailyWage)
+    {
+        return dailyWage.includes("80");
+    }
+    //some specifies whether called func returns true for any value
+    console.log("UC 7f:"+mapDaywithWageArray.some(PartTimeWage));
+    //UC 7g checking number of days employee actually worked
+    function totalDaysWorked(noOfDays,dailyWage)
+    {
+    if(dailyWage>0)
+    {
+        return noOfDays+=1;
+    }
+    return noOfDays;
+    }
+    //using reduce function and give noofdays as 0 for begining 
+    console.log("UC 7g no of days employee worked actually : "+empDailyWageArray.reduce(totalDaysWorked,0));
 }
+
     
     
 
