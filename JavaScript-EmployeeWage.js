@@ -93,6 +93,7 @@ console.log("empWage for UC2 : "+employeeWage);
     let empDailyWageArray= new Array();
     let empDailyWageMap = new Map();
     let empDailyHrsMap = new Map();
+    let empDailyHrsAndWageArray= new Array();
     function CalEmpWage(empHrs)
     {
         return empHrs*WAGE_PER_HOUR;
@@ -106,6 +107,15 @@ console.log("empWage for UC2 : "+employeeWage);
         empDailyWageArray.push(CalEmpWage(empHrs));
         empDailyWageMap.set(daysWorked,CalEmpWage(empHrs));
         empDailyHrsMap.set(daysWorked,empHrs);
+        empDailyHrsAndWageArray.push({
+            daynum:daysWorked,
+            dailyHrs:empHrs,
+            dailyWage:CalEmpWage(empHrs),
+            toString(){ 
+            return '\n day'+this.daynum+' => daily hrs '+this.dailyHrs+' daily wage '+this.dailyWage
+            },
+
+        });
     }
     let totalWage=CalEmpWage(totalWorkinghrs);
     console.log("UC6 daily wage array ");
@@ -202,6 +212,8 @@ console.log("empWage for UC2 : "+employeeWage);
     console.log("UC9 Full working days :"+fullWorkingDays);
     console.log("UC9 part time working days :"+partTimeWorkingDays);
     console.log("UC9 non working days :"+partTimeWorkingDays);
+    //UC10 storing days, hours , wage in a single object
+    console.log("UC10 using single object"+empDailyHrsAndWageArray);
 }
 
     
