@@ -92,6 +92,7 @@ console.log("empWage for UC2 : "+employeeWage);
     totalWorkinghrs=0;
     let empDailyWageArray= new Array();
     let empDailyWageMap = new Map();
+    let empDailyHrsMap = new Map();
     function CalEmpWage(empHrs)
     {
         return empHrs*WAGE_PER_HOUR;
@@ -104,6 +105,7 @@ console.log("empWage for UC2 : "+employeeWage);
         totalWorkinghrs+=empHrs;
         empDailyWageArray.push(CalEmpWage(empHrs));
         empDailyWageMap.set(daysWorked,CalEmpWage(empHrs));
+        empDailyHrsMap.set(daysWorked,empHrs);
     }
     let totalWage=CalEmpWage(totalWorkinghrs);
     console.log("UC6 daily wage array ");
@@ -137,7 +139,7 @@ console.log("empWage for UC2 : "+employeeWage);
     }
     let mapDaywithWageArray= empDailyWageArray.map(mapDayWithWage);
     //console.log(empDailyWageArray);
-    console.log(mapDaywithWageArray);
+    console.log(mapDaywithWageArray[1]);
     //console.log(dayCount);
 
     //UC 7c - displaying days when daily wage is 160
@@ -175,8 +177,32 @@ console.log("empWage for UC2 : "+employeeWage);
     {
         totalWageMap+=wage;
     }
-    console.log("total wage from map :"+totalWageMap)
-    console.log(empDailyWageMap);
+    console.log("UC8 total wage from map :"+totalWageMap)
+    //UC9- Using Arrow Functions
+    //using dailywagemap and dailyhrsmap to calculate the total hours and total salary
+    const findTotal=(totalVal,dailyVal)=>
+    {
+        return totalVal+dailyVal;
+    }
+    let count=0;
+    //using arrow functions to find total hours using findtotal func
+    let totalHours= Array.from(empDailyHrsMap.values()).reduce(findTotal,0);
+    //calculating totalSalary using filter and reduce in built func
+    let totalSalary=empDailyWageArray.filter(dailyWage=>dailyWage>0).reduce(findTotal,0);
+    console.log("UC9 totalHours: "+totalHours+"  totalSalary : "+totalSalary);
+    //days worked fulltime , parttime and nonworking
+    let nonWorkingDays=new Array();
+    let partTimeWorkingDays=new Array();
+    let fullWorkingDays=new Array();
+    empDailyHrsMap.forEach((value,key)=>{
+        if(value==8) fullWorkingDays.push(key);
+        else if(value==4)partTimeWorkingDays.push(key);
+        else nonWorkingDays.push(key);
+    });
+    console.log("UC9 Full working days :"+fullWorkingDays);
+    console.log("UC9 part time working days :"+partTimeWorkingDays);
+    console.log("UC9 non working days :"+partTimeWorkingDays);
+
 }
 
     
