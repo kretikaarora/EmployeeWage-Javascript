@@ -202,6 +202,7 @@ console.log("empWage for UC2 : "+employeeWage);
     console.log("UC9 Full working days :"+fullWorkingDays);
     console.log("UC9 part time working days :"+partTimeWorkingDays);
     console.log("UC9 non working days :"+partTimeWorkingDays);
+
 }
 
     
